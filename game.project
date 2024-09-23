@@ -1,0 +1,21 @@
+[bootstrap]
+main_collection = /main/undo_example/undo_example.collectionc
+
+[script]
+shared_state = 1
+
+[display]
+width = 320
+height = 320
+
+[android]
+input_method = HiddenInputField
+
+[project]
+title = Tick Tock Toe
+publisher = Pawel Jarosz
+developer = Pawel Jarosz
+
+[library]
+include_dirs = immutable
+

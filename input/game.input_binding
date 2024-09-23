@@ -1,0 +1,48 @@
+key_trigger {
+  input: KEY_BACKSPACE
+  action: "undo"
+}
+key_trigger {
+  input: KEY_KP_1
+  action: "bot_left"
+}
+key_trigger {
+  input: KEY_KP_2
+  action: "bot_mid"
+}
+key_trigger {
+  input: KEY_KP_3
+  action: "bot_right"
+}
+key_trigger {
+  input: KEY_KP_4
+  action: "mid_left"
+}
+key_trigger {
+  input: KEY_KP_5
+  action: "mid_mid"
+}
+key_trigger {
+  input: KEY_KP_6
+  action: "mid_right"
+}
+key_trigger {
+  input: KEY_KP_7
+  action: "top_left"
+}
+key_trigger {
+  input: KEY_KP_8
+  action: "top_mid"
+}
+key_trigger {
+  input: KEY_KP_9
+  action: "top_right"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_1
+  action: "touch"
+}
+mouse_trigger {
+  input: MOUSE_BUTTON_RIGHT
+  action: "undo"
+}

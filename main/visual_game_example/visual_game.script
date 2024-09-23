@@ -1,0 +1,44 @@
+-- TICK TOCK TOE 
+-- is a game example using immutable tables and separating dgame logic from game visual representation or input collecting
+-- featuring undo and redo options.
+-- It assumes origin in top left corner, so that:
+--
+-- 0------1---|---2---|---3---|---> X
+-- |          |       |       |
+-- |      A   |   B   |   C   |
+-- 1    (1,1) | (1,2) | (1,3) |
+-- |----------|-------|-------|
+-- |      D   |   E   |   F   |
+-- 2    (2,1) | (2,2) | (2,3) |
+-- |----------|-------|-------|
+-- |      G   |   H   |   I   |
+-- 3    (3,1) | (3,2) | (3,3) |
+-- |----------|-------|-------|
+-- |
+-- \/ Y
+
+local logic =	require "game.logic.tic_tac_toe"
+local input =	require "game.input.mouse"
+local visual =	require "game.visual.label_print"
+
+function init(self)
+	msg.post("#", "acquire_input_focus")
+
+	self.current_game_state = logic.new_game_state()	-- Create initial game state
+
+	visual.render(self.current_game_state)		-- Render the initial state
+end
+
+function on_input(self, action_id, action)
+	local game_logic_input = input.on_input(action_id, action)	-- Convert current input to game logic input
+	if game_logic_input and (game_logic_input.row == 0 or game_logic_input.col == 0) then
+		return		-- Skip if no game logic input is collected
+	end
+
+	-- React to action using the game logic input and create the new game state
+	local new_game_state = logic.make_move(self.current_game_state, game_logic_input)
+
+	self.current_game_state = new_game_state	-- Commit new state
+
+	visual.render(self.current_game_state)	-- Render new game state
+end
